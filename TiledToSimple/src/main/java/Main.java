@@ -235,8 +235,23 @@ public class Main {
             tempDimArr.add(ConVal.PLAYER_WIDTH);
             tempDimArr.add(ConVal.PLAYER_HEIGHT);
         } else {
-            tempDimArr.add(Float.parseFloat(df.format((Long) inputObject.get("width") / 32d)));
-            tempDimArr.add(Float.parseFloat(df.format((Long) inputObject.get("height") / 32d)));
+            try{
+                tempDimArr.add(Float.parseFloat(df.format((Long) inputObject.get("width") / 32d)));
+            }
+            catch(Exception e)
+            {
+                tempDimArr.add(Float.parseFloat(df.format(((Double) inputObject.get("width") / 32))));
+
+            }
+            try{
+                tempDimArr.add(Float.parseFloat(df.format((Long) inputObject.get("height") / 32d)));
+
+            }
+            catch(Exception e)
+            {
+                tempDimArr.add(Float.parseFloat(df.format((Double) inputObject.get("height") / 32)));
+
+            }
         }
 
 
