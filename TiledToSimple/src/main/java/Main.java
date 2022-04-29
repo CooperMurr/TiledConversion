@@ -19,7 +19,7 @@ public class Main {
 
     public static void main(String[] xargs) throws IOException {
 
-        File file1 = new File("C:\\Users\\murrj\\Documents\\Game Design\\GrowCrazyRevise\\tiledConversion\\TiledToSimple\\src\\main\\resources\\leveltest.tmj");
+        File file1 = new File("C:\\Users\\murrj\\Documents\\Game Design\\GrowCrazyRevise\\TiledConversion\\TiledToSimple\\src\\main\\resources\\leveltest.tmj");
         Scanner sc = new Scanner(file1);
 
         String levelNumber = "1";
@@ -74,6 +74,10 @@ public class Main {
                         ((JSONObject) gameProperties.get(i)).get("value"));
             }
         }
+        JSONObject bgNoSky = new JSONObject();
+        bgNoSky.put("textureID", ConVal.BG_NO_COOL_TEXTURE);
+        bgNoSky.put("constant", ConVal.BACKGROUND_CONSTANT);
+
         JSONObject background = new JSONObject();
         background.put("textureID", "background");
         background.put("constant", ConVal.BACKGROUND_CONSTANT);
@@ -83,6 +87,7 @@ public class Main {
         foreground.put("constant", ConVal.FOREGROUND_CONSTANT);
 
         JSONArray tempArr = new JSONArray();
+        tempArr.add(bgNoSky);
         tempArr.add(background);
         tempArr.add(foreground);
         finalOutput.put("background_layers", tempArr);
@@ -120,6 +125,8 @@ public class Main {
                 addXYWidthHeight(tempObj, inputObject, type);
                 break;
             case "artifact":
+            case "fish":
+            case "bird":
                 tempObj.put("type", type);
                 addMatchID(tempObj, inputObject);
                 addXYWidthHeight(tempObj, inputObject, type);
@@ -211,7 +218,13 @@ public class Main {
 
         JSONArray tempPosArr = new JSONArray();
         JSONArray tempDimArr = new JSONArray();
-        tempPosArr.add(Float.parseFloat(df.format(((Double) inputObject.get("x") / 32d))));
+        try {
+            tempPosArr.add(Float.parseFloat(df.format(((Double) inputObject.get("x") / 32d))));
+        }
+        catch (Exception e)
+        {
+            tempPosArr.add(Float.parseFloat(df.format(((Long) inputObject.get("x") / 32))));
+        }
         try {
             tempPosArr.add(Float.parseFloat(df.format((ConVal.GAME_HEIGHT - (Double) inputObject.get("y")) / 32d)));
         } catch (Exception e) {

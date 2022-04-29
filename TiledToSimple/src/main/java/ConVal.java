@@ -37,4 +37,6 @@ public class ConVal {
     public static final float SPEED_COOL = 50f;
     public static final float AIR_CONTROL = 0.8f;
     public static final float SHOT_COOL = 2f;
+
+    public static final String BG_NO_COOL_TEXTURE = "bg_no_sky";
         }
