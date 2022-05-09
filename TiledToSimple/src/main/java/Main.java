@@ -173,8 +173,6 @@ public class Main {
                 tempObj.put("textureID", tempArr);
                 tempObj.put("matchID", -1);
                 addXYWidthHeight(tempObj, inputObject, type);
-
-
         }
         return tempObj;
     }
