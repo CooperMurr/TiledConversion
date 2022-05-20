@@ -19,10 +19,12 @@ public class Main {
 
     public static void main(String[] xargs) throws IOException {
 
-        File file1 = new File("C:\\Users\\murrj\\Documents\\Game Design\\GrowCrazyRevise\\TiledConversion\\TiledToSimple\\src\\main\\resources\\leveltest.tmj");
+        File file1 = new File(
+                "C:\\Users\\bel88\\Documents\\Cornell_courses\\CS 3152\\GrowCrazy\\core\\assets\\levels\\TiledFiles\\3.2 Catch Vase.tmj"
+        );
         Scanner sc = new Scanner(file1);
 
-        String levelNumber = "1";
+        String levelNumber = "3.2 Catch Vase";
 
         sc.useDelimiter("\\Z");
 
@@ -55,7 +57,7 @@ public class Main {
 
         String s = m.writerWithDefaultPrettyPrinter().writeValueAsString(finalOutput);
 
-        try (FileWriter file = new FileWriter("level" + levelNumber + ".json")) {
+        try (FileWriter file = new FileWriter(levelNumber + ".json")) {
             file.write(s);
             file.flush();
 
@@ -172,6 +174,7 @@ public class Main {
                 }
                 tempObj.put("textureID", tempArr);
                 tempObj.put("matchID", -1);
+                addPlantJuice(tempObj, inputObject);
                 addXYWidthHeight(tempObj, inputObject, type);
         }
         return tempObj;
@@ -206,6 +209,19 @@ public class Main {
             String name = (String) (((JSONObject) properties.get(i)).get("name"));
             if (name.equals("matchID")) {
                 tempObj.put("matchID", (((JSONObject) properties.get(i)).get("value")));
+                break;
+            }
+        }
+        return tempObj;
+    }
+
+    public static JSONObject addPlantJuice(JSONObject tempObj, JSONObject inputObject) {
+        JSONArray properties = (JSONArray) inputObject.get("properties");
+
+        for (int i = 0; i < properties.size(); i++) {
+            String name = (String) (((JSONObject) properties.get(i)).get("name"));
+            if (name.equals("juice")) {
+                tempObj.put("juice", (((JSONObject) properties.get(i)).get("value")));
                 break;
             }
         }
