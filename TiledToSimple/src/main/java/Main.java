@@ -70,8 +70,8 @@ public class Main {
     public static JSONObject addGameProperties(JSONArray gameProperties, JSONObject finalOutput) {
 
         for (int i = 0; i < gameProperties.size(); i++) {
-            if (!(((JSONObject) gameProperties.get(i)).get("name").equals("background"))
-                    ) {
+            if (!(((JSONObject) gameProperties.get(i)).get("name").equals("background")) &&
+                    !(((JSONObject) gameProperties.get(i)).get("name").equals("foreground"))) {
                 finalOutput.put(((JSONObject) gameProperties.get(i)).get("name"),
                         ((JSONObject) gameProperties.get(i)).get("value"));
             }
@@ -84,14 +84,14 @@ public class Main {
         background.put("textureID", "background");
         background.put("constant", ConVal.BACKGROUND_CONSTANT);
 
-//        JSONObject foreground = new JSONObject();
-//        foreground.put("textureID", "foreground");
-//        foreground.put("constant", ConVal.FOREGROUND_CONSTANT);
+        JSONObject foreground = new JSONObject();
+        foreground.put("textureID", "foreground");
+        foreground.put("constant", ConVal.FOREGROUND_CONSTANT);
 
         JSONArray tempArr = new JSONArray();
         tempArr.add(bgNoSky);
         tempArr.add(background);
-//        tempArr.add(foreground);
+        tempArr.add(foreground);
         finalOutput.put("background_layers", tempArr);
         return finalOutput;
     }
