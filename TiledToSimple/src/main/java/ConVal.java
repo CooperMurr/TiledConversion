@@ -38,7 +38,7 @@ public class ConVal {
     public static final float AIR_CONTROL = 0.8f;
     public static final float SHOT_COOL = 2f;
 
-    public static final String BG_NO_GROUND_TEXTURE = "bg_no_sky";
+    public static final String BG_NO_GROUND_TEXTURE = "bg_ground_only";
     public static final String TUTORIAL_MOVE_TEXTURE  = "tutorial_move";
     public static final String TUTORIAL_PLANT_TEXTURE = "tutorial_plant";
     public static final String TUTORIAL_PICKUP_TEXTURE = "tutorial_pickup";
