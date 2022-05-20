@@ -91,7 +91,7 @@ public class Main {
         JSONArray tempArr = new JSONArray();
         tempArr.add(bgNoSky);
         tempArr.add(background);
-        tempArr.add(foreground);
+//        tempArr.add(foreground);
         finalOutput.put("background_layers", tempArr);
         return finalOutput;
     }
