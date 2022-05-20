@@ -276,7 +276,10 @@ public class Main {
             String name = (String) (((JSONObject) properties.get(i)).get("name"));
             if (name.equals("juice")) {
                 tempObj.put("juice", (((JSONObject) properties.get(i)).get("value")));
-                break;
+            }
+            else if(name.equals("pot_type"))
+            {
+                tempObj.put("pot_type", (((JSONObject) properties.get(i)).get("value")));
             }
         }
         return tempObj;
