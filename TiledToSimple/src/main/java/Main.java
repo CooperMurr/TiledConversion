@@ -20,11 +20,11 @@ public class Main {
     public static void main(String[] xargs) throws IOException {
 
         File file1 = new File(
-                "C:\\Users\\bel88\\Documents\\Cornell_courses\\CS 3152\\GrowCrazy\\core\\assets\\levels\\TiledFiles\\3.2 Catch Vase.tmj"
+                "C:\\Users\\Lenovo\\Documents\\GameDesign\\TiledConversion\\TiledToSimple\\src\\main\\resources\\javier1..tmj"
         );
         Scanner sc = new Scanner(file1);
 
-        String levelNumber = "3.2 Catch Vase";
+        String levelNumber = "testlevel";
 
         sc.useDelimiter("\\Z");
 
@@ -40,9 +40,7 @@ public class Main {
         JSONArray layers = (JSONArray) topObject.get("layers");
         JSONArray gameProperties = (JSONArray) topObject.get("properties");
 
-        JSONArray walls = (JSONArray) ((JSONObject) layers.get(0)).get("objects");
-
-        JSONArray inputObjects = (JSONArray) ((JSONObject) layers.get(2)).get("objects");
+        JSONArray inputObjects = (JSONArray) ((JSONObject) layers.get(1)).get("objects");
 
         JSONArray objects = new JSONArray();
 
