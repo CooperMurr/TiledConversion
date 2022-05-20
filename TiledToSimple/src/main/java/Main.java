@@ -20,7 +20,7 @@ public class Main {
     public static void main(String[] xargs) throws IOException {
 
         File file1 = new File(
-                "C:\\Users\\Lenovo\\Documents\\GameDesign\\TiledConversion\\TiledToSimple\\src\\main\\resources\\cooper1.tmj");
+                "C:\\Users\\Lenovo\\Documents\\GameDesign\\TiledConversion\\TiledToSimple\\src\\main\\resources\\cooper2.tmj");
         Scanner sc = new Scanner(file1);
 
         String levelNumber = "cooper1";
@@ -66,10 +66,21 @@ public class Main {
 
     public static JSONObject addGameProperties(JSONArray gameProperties, JSONObject finalOutput) {
         String backgroundValue = "";
+        boolean isTutorial = false;
+        String tutorialType = "";
         for (int i = 0; i < gameProperties.size(); i++) {
             if (!(((JSONObject) gameProperties.get(i)).get("name").equals("background")) &&
                     !(((JSONObject) gameProperties.get(i)).get("name").equals("foreground"))) {
-
+                if((((JSONObject) gameProperties.get(i)).get("name").equals("isTutorial")))
+                {
+                    isTutorial = (boolean)  (((JSONObject) gameProperties.get(i)).get("value"));
+                }
+                else if((((JSONObject) gameProperties.get(i)).get("name").equals("tutorialType")) && isTutorial)
+                {
+                    finalOutput.put(((JSONObject) gameProperties.get(i)).get("name"),
+                            ((JSONObject) gameProperties.get(i)).get("value"));
+                    tutorialType =(String) ((JSONObject) gameProperties.get(i)).get("value");
+                }
                 finalOutput.put(((JSONObject) gameProperties.get(i)).get("name"),
                         ((JSONObject) gameProperties.get(i)).get("value"));
             }
@@ -79,21 +90,62 @@ public class Main {
             }
         }
         JSONObject bgNoSky = new JSONObject();
-        bgNoSky.put("textureID", ConVal.BG_NO_COOL_TEXTURE);
+        bgNoSky.put("textureID", ConVal.BG_NO_GROUND_TEXTURE);
         bgNoSky.put("constant", ConVal.BACKGROUND_CONSTANT);
 
         JSONObject background = new JSONObject();
         background.put("textureID", backgroundValue);
         background.put("constant", ConVal.BACKGROUND_CONSTANT);
 
-        JSONObject foreground = new JSONObject();
-        foreground.put("textureID", "foreground");
-        foreground.put("constant", ConVal.FOREGROUND_CONSTANT);
+        JSONObject butlerImage = new JSONObject();
+
+        if(isTutorial)
+        {
+            switch(tutorialType)
+            {
+                case("move"):
+                    butlerImage.put("textureID", ConVal.TUTORIAL_MOVE_TEXTURE);
+                    butlerImage.put("constant", ConVal.BACKGROUND_CONSTANT);
+                    break;
+                case("plant"):
+                    butlerImage.put("textureID", ConVal.TUTORIAL_PLANT_TEXTURE);
+                    butlerImage.put("constant", ConVal.BACKGROUND_CONSTANT);
+                    break;
+                case("pickup"):
+                    butlerImage.put("textureID", ConVal.TUTORIAL_PICKUP_TEXTURE);
+                    butlerImage.put("constant", ConVal.BACKGROUND_CONSTANT);
+                    break;
+                case("owner"):
+                    butlerImage.put("textureID", ConVal.TUTORIAL_OWNER_TEXTURE);
+                    butlerImage.put("constant", ConVal.BACKGROUND_CONSTANT);
+                    break;
+                case("breakable"):
+                    butlerImage.put("textureID", ConVal.TUTORIAL_BREAKABLE_TEXTURE);
+                    butlerImage.put("constant", ConVal.BACKGROUND_CONSTANT);
+                    break;
+                case("owl"):
+                    butlerImage.put("textureID", ConVal.TUTORIAL_OWL);
+                    butlerImage.put("constant", ConVal.BACKGROUND_CONSTANT);
+                    break;
+                case("ladder"):
+                    butlerImage.put("textureID", ConVal.TUTORIAL_LADDER);
+                    butlerImage.put("constant", ConVal.BACKGROUND_CONSTANT);
+                    break;
+                case("fish"):
+                    butlerImage.put("textureID", ConVal.TUTORIAL_FISH);
+                    butlerImage.put("constant", ConVal.BACKGROUND_CONSTANT);
+                    break;
+
+            }
+        }
 
         JSONArray tempArr = new JSONArray();
         tempArr.add(bgNoSky);
         tempArr.add(background);
-//        tempArr.add(foreground);
+        if(isTutorial)
+        {
+            tempArr.add(butlerImage);
+        }
         finalOutput.put("background_layers", tempArr);
         return finalOutput;
     }
