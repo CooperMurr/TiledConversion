@@ -20,11 +20,10 @@ public class Main {
     public static void main(String[] xargs) throws IOException {
 
         File file1 = new File(
-                "C:\\Users\\Lenovo\\Documents\\GameDesign\\TiledConversion\\TiledToSimple\\src\\main\\resources\\javier1..tmj"
-        );
+                "C:\\Users\\Lenovo\\Documents\\GameDesign\\TiledConversion\\TiledToSimple\\src\\main\\resources\\cooper1.tmj");
         Scanner sc = new Scanner(file1);
 
-        String levelNumber = "testlevel";
+        String levelNumber = "cooper1";
 
         sc.useDelimiter("\\Z");
 
@@ -66,12 +65,17 @@ public class Main {
     }
 
     public static JSONObject addGameProperties(JSONArray gameProperties, JSONObject finalOutput) {
-
+        String backgroundValue = "";
         for (int i = 0; i < gameProperties.size(); i++) {
             if (!(((JSONObject) gameProperties.get(i)).get("name").equals("background")) &&
                     !(((JSONObject) gameProperties.get(i)).get("name").equals("foreground"))) {
+
                 finalOutput.put(((JSONObject) gameProperties.get(i)).get("name"),
                         ((JSONObject) gameProperties.get(i)).get("value"));
+            }
+            else if ((((JSONObject) gameProperties.get(i)).get("name").equals("background")))
+            {
+                backgroundValue =  (String) ((JSONObject) gameProperties.get(i)).get("value");
             }
         }
         JSONObject bgNoSky = new JSONObject();
@@ -79,7 +83,7 @@ public class Main {
         bgNoSky.put("constant", ConVal.BACKGROUND_CONSTANT);
 
         JSONObject background = new JSONObject();
-        background.put("textureID", "background");
+        background.put("textureID", backgroundValue);
         background.put("constant", ConVal.BACKGROUND_CONSTANT);
 
         JSONObject foreground = new JSONObject();
