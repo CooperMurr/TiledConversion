@@ -20,10 +20,10 @@ public class Main {
     public static void main(String[] xargs) throws IOException {
 
         File file1 = new File(
-                "C:\\Users\\Lenovo\\Documents\\GameDesign\\TiledConversion\\TiledToSimple\\src\\main\\resources\\cooper2.tmj");
+                "C:\\Users\\Lenovo\\Documents\\GameDesign\\TiledConversion\\TiledToSimple\\src\\main\\resources\\birdtutorial.tmj");
         Scanner sc = new Scanner(file1);
 
-        String levelNumber = "cooper1";
+        String levelNumber = "birdtutorial";
 
         sc.useDelimiter("\\Z");
 
@@ -200,7 +200,7 @@ public class Main {
                 break;
             case "artifact":
             case "fish":
-            case "bird":
+            case "artifact:birdcage":
                 tempObj.put("type", type);
                 addMatchID(tempObj, inputObject);
                 addXYWidthHeight(tempObj, inputObject, type);
