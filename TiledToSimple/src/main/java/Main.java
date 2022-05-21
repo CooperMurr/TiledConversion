@@ -98,7 +98,7 @@ public class Main {
         background.put("constant", ConVal.BACKGROUND_CONSTANT);
 
         JSONObject butlerImage = new JSONObject();
-
+        JSONObject butlerText = new JSONObject();
         if(isTutorial)
         {
             switch(tutorialType)
@@ -106,30 +106,44 @@ public class Main {
                 case("move"):
                     butlerImage.put("textureID", ConVal.TUTORIAL_MOVE_TEXTURE);
                     butlerImage.put("constant", ConVal.BACKGROUND_CONSTANT);
+                    butlerText.put("textureID", ConVal.MOVE_BUTLER);
+                    butlerText.put("constant", ConVal.BACKGROUND_CONSTANT);
                     break;
                 case("plant"):
                     butlerImage.put("textureID", ConVal.TUTORIAL_PLANT_TEXTURE);
                     butlerImage.put("constant", ConVal.BACKGROUND_CONSTANT);
+                    butlerText.put("textureID", ConVal.PLANT_BUTLER);
+                    butlerText.put("constant", ConVal.BACKGROUND_CONSTANT);
                     break;
                 case("pickup"):
                     butlerImage.put("textureID", ConVal.TUTORIAL_PICKUP_TEXTURE);
                     butlerImage.put("constant", ConVal.BACKGROUND_CONSTANT);
+                    butlerText.put("textureID", ConVal.PICKUP_BUTLER);
+                    butlerText.put("constant", ConVal.BACKGROUND_CONSTANT);
                     break;
                 case("owner"):
                     butlerImage.put("textureID", ConVal.TUTORIAL_OWNER_TEXTURE);
                     butlerImage.put("constant", ConVal.BACKGROUND_CONSTANT);
+                    butlerText.put("textureID", ConVal.OWNER_BUTLER);
+                    butlerText.put("constant", ConVal.BACKGROUND_CONSTANT);
                     break;
                 case("breakable"):
                     butlerImage.put("textureID", ConVal.TUTORIAL_BREAKABLE_TEXTURE);
                     butlerImage.put("constant", ConVal.BACKGROUND_CONSTANT);
+                    butlerText.put("textureID", ConVal.BREAKABLE_BUTLER);
+                    butlerText.put("constant", ConVal.BACKGROUND_CONSTANT);
                     break;
                 case("owl"):
                     butlerImage.put("textureID", ConVal.TUTORIAL_OWL);
                     butlerImage.put("constant", ConVal.BACKGROUND_CONSTANT);
+                    butlerText.put("textureID", ConVal.OWL_BUTLER);
+                    butlerText.put("constant", ConVal.BACKGROUND_CONSTANT);
                     break;
                 case("ladder"):
                     butlerImage.put("textureID", ConVal.TUTORIAL_LADDER);
                     butlerImage.put("constant", ConVal.BACKGROUND_CONSTANT);
+                    butlerText.put("textureID", ConVal.LADDER_BUTLER);
+                    butlerText.put("constant", ConVal.BACKGROUND_CONSTANT);
                     break;
                 case("fish"):
                     butlerImage.put("textureID", ConVal.TUTORIAL_FISH);
@@ -145,6 +159,10 @@ public class Main {
         if(isTutorial)
         {
             tempArr.add(butlerImage);
+            if(!(tutorialType.equals("fish")))
+            {
+                tempArr.add(butlerText);
+            }
         }
         finalOutput.put("background_layers", tempArr);
         return finalOutput;

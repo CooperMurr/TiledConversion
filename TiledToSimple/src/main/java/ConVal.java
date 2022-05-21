@@ -40,11 +40,27 @@ public class ConVal {
 
     public static final String BG_NO_GROUND_TEXTURE = "bg_ground_only";
     public static final String TUTORIAL_MOVE_TEXTURE  = "tutorial_move";
+    public static final String MOVE_BUTLER  = "tutorial_move_text";
+
     public static final String TUTORIAL_PLANT_TEXTURE = "tutorial_plant";
+    public static final String PLANT_BUTLER  = "tutorial_plant_text";
+
     public static final String TUTORIAL_PICKUP_TEXTURE = "tutorial_pickup";
+    public static final String PICKUP_BUTLER  = "tutorial_pickup_text";
+
     public static final String TUTORIAL_OWNER_TEXTURE = "tutorial_owner";
+    public static final String OWNER_BUTLER = "tutorial_owner_text";
+
     public static final String TUTORIAL_BREAKABLE_TEXTURE = "tutorial_breakable";
+    public static final String BREAKABLE_BUTLER  = "tutorial_breakable_text";
+
     public static final String TUTORIAL_OWL = "tutorial_owl";
+    public static final String OWL_BUTLER  = "tutorial_owl_text";
+
     public static final String TUTORIAL_LADDER = "tutorial_ladder";
+    public static final String LADDER_BUTLER  = "tutorial_ladder_text";
+
     public static final String TUTORIAL_FISH = "tutorial_fish";
-        }
+    public static final String FISH_BUTLER = "tutorial_fish_text";
+
+}
